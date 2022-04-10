@@ -189,9 +189,9 @@ def parse_input(input_team):
 		or input_team == "rays"
 		or input_team == "tampa bay devil rays"
 		or input_team == "devil rays"
-		or input_team == "tbd"
+		or input_team == "tbr"
 	):
-		return "Rays,TBD"
+		return "Rays,TBR"
 	elif (
 		input_team == "texas rangers"
 		or input_team == "texas"

@@ -509,16 +509,16 @@ pitchers_used = {"home": [], "away": []}
 # Print sorted batters for Home
 # print("\nStarting lineup for the " + str(years["home"]) + " " + teams["home"] + ":")
 # wait()
-for x in batters["home"]:
-	print(x[0] + " - " + format_batting_average(x[1]))
-	wait_short()
+# for x in batters["home"]:
+# 	print(x[0] + " - " + format_batting_average(x[1]))
+# 	wait_short()
 
-# Print sorted batters for Away
-print("\nStarting lineup for the " + str(years["away"]) + " " + teams["away"] + ":")
-wait()
-for x in batters["away"]:
-	print(x[0] + " - " + format_batting_average(x[1]))
-	wait_short()
+# # Print sorted batters for Away
+# print("\nStarting lineup for the " + str(years["away"]) + " " + teams["away"] + ":")
+# wait()
+# for x in batters["away"]:
+# 	print(x[0] + " - " + format_batting_average(x[1]))
+# 	wait_short()
 
 # Choose a random starting pitcher for each team
 pitcher_rand = random.randint(0, 4)
@@ -570,13 +570,13 @@ while gameover == False:  # Main game loop
 
 	if pitch_result == "Ball" and balls < 3: # Ball
 		balls += 1
-		pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
-		print("Ball. (" + str(balls) + " - " + str(strikes) + ")")
+		#pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
+		#print("Ball. (" + str(balls) + " - " + str(strikes) + ")")
 
 	elif pitch_result == "Ball" and balls == 3:  # Walk
 		pitch_result = "Walk"
-		pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
-		print("\033[1;30;102mWALK!\033[0m")
+		#pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
+		#print("\033[1;30;102mWALK!\033[0m")
 		if (on_base[1] == -1 and on_base[2] == -1 and on_base[3] == -1):
 			on_base[1] = current_batter[batting_team(half_inning)]
 		elif (on_base[1] > -1 and on_base[2] == -1 and on_base[3] == -1):
@@ -608,12 +608,12 @@ while gameover == False:  # Main game loop
 
 	elif pitch_result == "Strike" and strikes < 2: #Strike
 		strikes += 1
-		pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
-		print("Strike. (" + str(balls) + " - " + str(strikes) + ")")
+		#pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
+		#print("Strike. (" + str(balls) + " - " + str(strikes) + ")")
 
 	elif pitch_result == "Strike" and strikes == 2: # Strikeout
-		pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
-		print("\033[1;97;101mSTRIKEOUT!\033[0m")
+		#pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
+		#print("\033[1;97;101mSTRIKEOUT!\033[0m")
 		pitch_result = "Strikeout"
 		batters[batting_team(half_inning)][current_batter[batting_team(half_inning)]][8] += 1  # Batter strikeout count for box score
 		pitchers_used[pitching_team(half_inning)][-1][8] += 1 # Pitcher strikeout count for box score
@@ -621,12 +621,12 @@ while gameover == False:  # Main game loop
 
 	elif pitch_result == "Foul" and strikes < 2: # Foul
 		strikes += 1
-		pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
-		print("Foul. (" + str(balls) + " - " + str(strikes) + ")")
+		#pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
+		#print("Foul. (" + str(balls) + " - " + str(strikes) + ")")
 
-	elif pitch_result == "Foul" and strikes == 2:  # Foul (with 2 strikes)
-		pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
-		print("Foul. (" + str(balls) + " - " + str(strikes) + ")")
+	# elif pitch_result == "Foul" and strikes == 2:  # Foul (with 2 strikes)
+	# 	#pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
+	# 	#print("Foul. (" + str(balls) + " - " + str(strikes) + ")")
 
 	elif pitch_result == "Ball_in_play":
 		rand = random.randint(1, 100)
@@ -643,76 +643,76 @@ while gameover == False:  # Main game loop
 			else:
 				pitch_result == "Fly"
 
-			pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
-			ball_in_play_animation()
+			#pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
+			#ball_in_play_animation()
 
 			if (on_base[1] == -1 and on_base[2] == -1 and on_base[3] == -1):
 				# Bases empty
-				print("\033[1;97;101mFLY OUT!\033[0m")
+				#print("\033[1;97;101mFLY OUT!\033[0m")
 				out(1)
 			elif (on_base[1] > -1 and on_base[2] == -1 and on_base[3] == -1):
 				# Runner on first
-				print("\033[1;97;101mFLY OUT!\033[0m")
+				#print("\033[1;97;101mFLY OUT!\033[0m")
 				out(1)
 			elif (on_base[1] == -1 and on_base[2] > -1 and on_base[3] == -1 and outs < 2):
 				# Runner on and second, less than 2 outs
-				print("\033[1;30;103mFLY OUT! RUNNER ADVANCED.\033[0m")
+				#print("\033[1;30;103mFLY OUT! RUNNER ADVANCED.\033[0m")
 				out(1)
 				on_base[3] = on_base[2]
 				on_base[2] = -1
 			elif (on_base[1] == -1 and on_base[2] > -1 and on_base[3] == -1 and outs == 2):
 				# Runners on first and second, 2 outs
-				print("\033[1;97;101mFLY OUT!\033[0m")
+				#print("\033[1;97;101mFLY OUT!\033[0m")
 				out(1)
 			elif (on_base[1] == -1 and on_base[2] == -1 and on_base[3] > -1 and outs < 2):
 				#Runner on third, less than 2 outs
-				print("\033[1;30;102mSACRIFICE FLY!\033[0m")
+				#print("\033[1;30;102mSACRIFICE FLY!\033[0m")
 				out(1)
 				run(1)
 				on_base[3] = -1
 			elif (on_base[1] == -1 and on_base[2] == -1 and on_base[3] > -1 and outs == 2):
 				# Runner on third, 2 outs
-				print("\033[1;97;101mFLY OUT!\033[0m")
+				#print("\033[1;97;101mFLY OUT!\033[0m")
 				out(1)
 			elif (on_base[1] > -1 and on_base[2] > -1 and on_base[3] == -1 and outs < 2):
 				# Runners on first and second, less than 2 outs
-				print("\033[1;30;103mFLY OUT! RUNNER ADVANCED.\033[0m")
+				#print("\033[1;30;103mFLY OUT! RUNNER ADVANCED.\033[0m")
 				out(1)
 				on_base[3] = on_base[2]
 				on_base[2] = -1
 			elif (on_base[1] > -1 and on_base[2] > -1 and on_base[3] == -1 and outs == 2):
 				# Runners on first and second, 2 outs
-				print("\033[1;97;101mFLY OUT!\033[0m")
+				#print("\033[1;97;101mFLY OUT!\033[0m")
 				out(1)
 			elif (on_base[1] == -1 and on_base[2] > -1 and on_base[3] > -1 and outs < 2):
 				# Runners on second and third, less than 2 outs
-				print("\033[1;30;102mSACRIFICE FLY!\033[0m")
+				#print("\033[1;30;102mSACRIFICE FLY!\033[0m")
 				out(1)
 				run(1)
 				on_base[3] = -1
 			elif (on_base[1] == -1 and on_base[2] > -1 and on_base[3] > -1 and outs == 2):
 				# Runners on second and third, 2 outs
-				print("\033[1;97;101mFLY OUT!\033[0m")
+				#print("\033[1;97;101mFLY OUT!\033[0m")
 				out(1)
 			elif (on_base[1] > -1 and on_base[2] == -1 and on_base[3] > -1 and outs < 2):
 				# Runners on first and third, less than 2 outs
-				print("\033[1;30;102mSACRIFICE FLY!\033[0m")
+				#print("\033[1;30;102mSACRIFICE FLY!\033[0m")
 				out(1)
 				run(1)
 				on_base[3] = -1
 			elif (on_base[1] > -1 and on_base[2] == -1 and on_base[3] > -1 and outs == 2):
 				# Runners on first and third, 2 outs
-				print("\033[1;97;101mFLY OUT!\033[0m")
+				#print("\033[1;97;101mFLY OUT!\033[0m")
 				out(1)
 			elif (on_base[1] > -1 and on_base[2] > -1 and on_base[3] > -1 and outs < 2):
 				# Bases loaded, less than 2 outs
-				print("\033[1;30;102mSACRIFICE FLY!\033[0m")
+				#print("\033[1;30;102mSACRIFICE FLY!\033[0m")
 				out(1)
 				run(1)
 				on_base[3] = -1
 			elif (on_base[1] > -1 and on_base[2] > -1 and on_base[3] > -1 and outs < 2):
 				# Bases loaded, 2 outs
-				print("\033[1;97;101mFLY OUT!\033[0m")
+				#print("\033[1;97;101mFLY OUT!\033[0m")
 				out(1)
 			resetcount()
 			pitch_result = "Fly"
@@ -728,66 +728,66 @@ while gameover == False:  # Main game loop
 			else:
 				pitch_result == "Grounder"
 
-			pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
-			ball_in_play_animation()
+			#pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
+			#ball_in_play_animation()
 
 			if (on_base[1] == -1 and on_base[2] == -1 and on_base[3] == -1):
 				# Bases empty
-				print("\033[1;97;101mGROUND OUT!\033[0m")
+				#print("\033[1;97;101mGROUND OUT!\033[0m")
 				out(1)
 			elif (on_base[1] > -1 and on_base[2] == -1 and on_base[3] == -1 and outs < 2):
 				# Runner on first, 0-1 outs
-				print("\033[1;97;101mDOUBLE PLAY!\033[0m")
+				#print("\033[1;97;101mDOUBLE PLAY!\033[0m")
 				out(2)
 				on_base[1] = -1
 			elif (on_base[1] > -1 and on_base[2] == -1 and on_base[3] == -1 and outs == 2):
 				# Runner on first, 2 outs
-				print("\033[1;97;101mGROUND OUT!\033[0m")
+				#print("\033[1;97;101mGROUND OUT!\033[0m")
 				out(1)
 			elif (on_base[1] == -1 and on_base[2] > -1 and on_base[3] == -1):
 				# Runner on second
-				print("\033[1;97;101mGROUND OUT!\033[0m")
+				#print("\033[1;97;101mGROUND OUT!\033[0m")
 				out(1)
 			elif (on_base[1] == -1 and on_base[2] == -1 and on_base[3] > -1):
 				# Runner on third
-				print("\033[1;97;101mGROUND OUT!\033[0m")
+				#print("\033[1;97;101mGROUND OUT!\033[0m")
 				out(1)
 			elif (on_base[1] > -1 and on_base[2] > -1 and on_base[3] == -1 and outs == 0):
 				# Runners on first and second, 0 outs
-				print("\033[1;97;101mTRIPLE PLAY\033[0m")
+				#print("\033[1;97;101mTRIPLE PLAY\033[0m")
 				out(3)
 			elif (on_base[1] > -1 and on_base[2] > -1 and on_base[3] == -1 and outs == 1):
 				# Runners on first and second, 1 out
-				print("\033[1;97;101mDOUBLE PLAY!\033[0m")
+				#print("\033[1;97;101mDOUBLE PLAY!\033[0m")
 				out(2)
 			elif (on_base[1] > -1 and on_base[2] > -1 and on_base[3] == -1 and outs == 2):
 				# Runners on first and second, 2 outs
-				print("\033[1;97;101mGROUND OUT!\033[0m")
+				#print("\033[1;97;101mGROUND OUT!\033[0m")
 				out(1)
 			elif (on_base[1] == -1 and on_base[2] > -1 and on_base[3] > -1):
 				# Runners on second and third
-				print("\033[1;97;101mGROUND OUT!\033[0m")
+				#print("\033[1;97;101mGROUND OUT!\033[0m")
 				out(1)
 			elif (on_base[1] > -1 and on_base[2] > -1 and on_base[3] > -1 and outs == 0):
 				# Bases loaded, no outs
-				print("\033[1;97;101mTRIPLE PLAY!\033[0m")
+				#print("\033[1;97;101mTRIPLE PLAY!\033[0m")
 				out(3)
 			elif (on_base[1] > -1 and on_base[2] > -1 and on_base[3] > -1 and outs == 1):
 				# Bases loaded, 2 out
-				print("\033[1;97;101mDOUBLE PLAY!\033[0m")
+				#print("\033[1;97;101mDOUBLE PLAY!\033[0m")
 				out(2)
 			elif (on_base[1] > -1 and on_base[2] > -1 and on_base[3] > -1 and outs == 2):
 				# Bases loaded, 2 outs
-				print("\033[1;97;101mGROUND OUT!\033[0m")
+				#print("\033[1;97;101mGROUND OUT!\033[0m")
 				out(1)
 			elif (on_base[1] > -1 and on_base[2] == -1 and on_base[3] > -1 and outs < 2):
 				# Runners on first and third, 0-1 outs
-				print("\033[1;97;101mDOUBLE PLAY!\033[0m")
+				#print("\033[1;97;101mDOUBLE PLAY!\033[0m")
 				out(2)
 				on_base[1] = -1
 			elif (on_base[1] > -1 and on_base[2] == -1 and on_base[3] > -1 and outs == 2):
 				# Runners on first and third, 2 outs
-				print("\033[1;97;101mGROUND OUT!\033[0m")
+				#print("\033[1;97;101mGROUND OUT!\033[0m")
 				out(1)
 			resetcount()
 			pitch_result = "Grounder"
@@ -803,10 +803,10 @@ while gameover == False:  # Main game loop
 			else:
 				pitch_result == "Single"
 
-			pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
-			ball_in_play_animation()
+			#pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
+			#ball_in_play_animation()
 
-			print("\033[1;30;102mSINGLE!\033[0m")
+			#print("\033[1;30;102mSINGLE!\033[0m")
 			if (on_base[1] == -1 and on_base[2] == -1 and on_base[3] == -1):
 				# Bases empty
 				on_base[1] = current_batter[batting_team(half_inning)]
@@ -865,9 +865,9 @@ while gameover == False:  # Main game loop
 			else:
 				pitch_result == "Double"
 
-			pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
-			ball_in_play_animation()
-			print("\033[1;30;102mDOUBLE!\033[0m")
+			#pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
+			#ball_in_play_animation()
+			#print("\033[1;30;102mDOUBLE!\033[0m")
 			if (on_base[1] == -1 and on_base[2] == -1 and on_base[3] == -1):
 				# Bases empty
 				on_base[2] = current_batter[batting_team(half_inning)]
@@ -925,9 +925,9 @@ while gameover == False:  # Main game loop
 			else:
 				pitch_result == "Home run"
 
-			pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
-			ball_in_play_animation()
-			print("\033[1;30;102mHOME RUN!\033[0m")
+			#pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
+			#ball_in_play_animation()
+			#print("\033[1;30;102mHOME RUN!\033[0m")
 			if (on_base[1] == -1 and on_base[2] == -1 and on_base[3] == -1):
 				# Bases empty
 				run(1)
@@ -977,8 +977,8 @@ while gameover == False:  # Main game loop
 			else:
 				pitch_result == "Hit by pitch"
 
-			pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
-			print("\033[1;30;102mHIT BY PITCH!\033[0m")
+			#pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
+			#print("\033[1;30;102mHIT BY PITCH!\033[0m")
 			if (on_base[1] == -1 and on_base[2] == -1 and on_base[3] == -1):
 				# Bases empty
 				on_base[1] = current_batter[batting_team(half_inning)]
@@ -1024,9 +1024,9 @@ while gameover == False:  # Main game loop
 			else:
 				pitch_result == "Triple"
 
-			pitching_animation(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
-			ball_in_play_animation()
-			print("\033[1;30;102mTRIPLE!\033[0m")
+			#(pitch_count, half_inning, current_pitcher, redo_pitch_loops)
+			#ball_in_play_animation()
+			#print("\033[1;30;102mTRIPLE!\033[0m")
 			if (on_base[1] == -1 and on_base[2] == -1 and on_base[3] == -1):
 				# Bases empty
 				on_base[3] = current_batter[batting_team(half_inning)]
@@ -1099,7 +1099,7 @@ while gameover == False:  # Main game loop
 
 		atbat_pitch_count = 1
 
-		print("")
+		#print("")
 
 		if gameover == True:
 			break
@@ -1115,12 +1115,12 @@ while gameover == False:  # Main game loop
 
 # Game over
 
-wait_short()
-print("")
-wait_short()
-print("")
-wait_short()
-print("")
+# wait_short()
+# print("")
+# wait_short()
+# print("")
+# wait_short()
+# print("")
 
 if home_score > away_score:
 	print("Game has ended. \033[1;93;40m" + teams["home"] + " win!\033[0m")
